@@ -48,6 +48,13 @@ lars.turnOn(callback)
 > true
 ```
 
+### Set the temperature
+
+```
+lars.setTemperature(95, callback);
+> true
+```
+
 ### Sessions
 
 #### Get the list of all available sessions
