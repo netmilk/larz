@@ -8,7 +8,7 @@ Larz lives at the address `http://10.0.0.112`
 
 ### Auth
 
-Lar` will be at your service when you use `basic` authentication with username `root` and the same password as for our wifi.
+Larz will be at your service when you use `basic` authentication with username `root` and the same password as for our wifi.
 
 ### The status of Larz
 
