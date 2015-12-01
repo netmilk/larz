@@ -2,6 +2,86 @@
 
 Sauna control buddy
 
+## Javascript Client Library / SDK
+
+The SDK is encapsuling Larz's HTTP API with a async interface.
+
+If the function is called with the `callback` function passed as the last argument, the `callack` is called with:
+- the error object as a first argument or null if no error happend
+- the return data as the second argument
+
+### Creating the instance and connecting
+
+```
+var larz = new Larz("http://10.0.0.112");
+```
+
+### Get current status
+
+```
+larz.status(callback())
+>
+{
+  "temperature_out" : "25.69",
+  "heater" : "1",
+  "session" : "1448927714",
+  "temperature_in" : "26.06",
+  "hysteresis" : "1.00",
+  "temperature" : "27",
+  "power" : "1"
+}
+```
+
+
+### Turn the sauna on and off
+
+Turn the sauna on
+
+```
+lars.turnOn(callback)
+> true
+```
+
+Turn the sauna off
+```
+lars.turnOn(callback)
+> true
+```
+
+### Sessions
+
+#### Get the list of all available sessions
+
+```
+larz.sessions(callback)
+> ['1448927628', '1448927714', '1448929716', '1449011515']
+```
+
+#### Get specific session data
+
+```
+lars.session("1448927628", callback)
+>
+{
+  "1448927628": {
+    "heater": true,
+    "temperature_in": "27.3"
+    "temperature_out:" "12.1"
+  },
+  "1448927648": {
+    "heater": true,
+    "temperature_in": "28.3"
+    "temperature_out:" "12.1"
+  },
+  "1448927658": {
+    "heater": true,
+    "temperature_in": "29.3"
+    "temperature_out:" "12.1"
+  },
+  ...
+}
+```
+
 ## HTTP API
 
 Larz lives at the address `http://10.0.0.112`
@@ -180,7 +260,9 @@ curl -s -u root:hubert11 http://10.0.0.112/sd/sessions/1448927628.csv
 
 ## Yun Linux
 
-## Javascript Client Library / SDK
+
+
+
 
 
 
