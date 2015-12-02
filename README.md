@@ -33,7 +33,7 @@ var larz = new Larz("http://10.0.0.112");
 ### Get current status
 
 ```
-larz.status(callback)
+larz.status(callback);
 >
 {
   "temperature_out" : "25.69",
@@ -52,13 +52,13 @@ larz.status(callback)
 Turn the sauna on
 
 ```
-lars.turnOn(callback)
+lars.turnOn(callback);
 > true
 ```
 
 Turn the sauna off
 ```
-lars.turnOff(callback)
+lars.turnOff(callback);
 > true
 ```
 
@@ -74,14 +74,14 @@ lars.setTemperature(95, callback);
 #### Get the list of all available sessions
 
 ```
-larz.sessions(callback)
+larz.sessions(callback);
 > ['1448927628', '1448927714', '1448929716', '1449011515']
 ```
 
 #### Get specific session data
 
 ```
-lars.session("1448927628", callback)
+lars.session("1448927628", callback);
 >
 {
   "1448927628": {
