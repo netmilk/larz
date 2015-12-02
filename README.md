@@ -1,6 +1,6 @@
 # Larz
 
-Get hot and steamy with Larz, your sauna control buddy. Larz is here to help you set and maintain a nice and toasty sauna for an ultimate sweating experience. Boots.
+Get hot and steamy with Larz, your sauna control buddy. Larz is here to help you set and maintain a nice and toasty sauna for an ultimate sweating experience. Over wifi. And clouds of the internets. From the smartphone. Boots.
 
 ![Sauna emoji](https://i.guim.co.uk/img/static/sys-images/Guardian/Pix/pictures/2015/11/4/1446659930454/bff5484a-481b-4287-a6df-8c8c29f56ecf-2060x1236.jpeg?w=1920&q=85&auto=format&sharp=10&s=648362f3c38bb3df3aa09c25d3a6cd9e)
 
@@ -33,7 +33,7 @@ var larz = new Larz("http://10.0.0.112");
 ### Get Current Status
 
 ```
-larz.status(callback)
+larz.status(callback);
 >
 {
   "temperature_out" : "25.69",
@@ -52,13 +52,13 @@ larz.status(callback)
 Turn the sauna on
 
 ```
-lars.turnOn(callback)
+lars.turnOn(callback);
 > true
 ```
 
 Turn the sauna off
 ```
-lars.turnOff(callback)
+lars.turnOff(callback);
 > true
 ```
 
@@ -74,14 +74,14 @@ lars.setTemperature(95, callback);
 #### Get the list of all available sessions
 
 ```
-larz.sessions(callback)
+larz.sessions(callback);
 > ['1448927628', '1448927714', '1448929716', '1449011515']
 ```
 
 #### Get Specific Session Data
 
 ```
-lars.session("1448927628", callback)
+lars.session("1448927628", callback);
 >
 {
   "1448927628": {
