@@ -1,8 +1,20 @@
 # Larz
 
-Sauna control buddy
+Get hot and steamy with Larz, your sauna control buddy. Larz is here to help you set and maintain a nice and toasty sauna for an ultimate sweating experience. Boots.
 
 ![Sauna emoji](https://i.guim.co.uk/img/static/sys-images/Guardian/Pix/pictures/2015/11/4/1446659930454/bff5484a-481b-4287-a6df-8c8c29f56ecf-2060x1236.jpeg?w=1920&q=85&auto=format&sharp=10&s=648362f3c38bb3df3aa09c25d3a6cd9e)
+
+### What Exactly Can Larz Do?
+
+Larz is simply the bestest sauna buddy. All of Larz's operations deal with Arduino Yun's HTTP interface for its key-value store. [Check out Arduino's guide for more information and examples](https://www.arduino.cc/en/Guide/ArduinoYun#toc5).
+
+Some of Larz's basic features include:
+- Retrieving current sauna temperature
+- Checking the current temperature outside of the sauna
+- Countdown to desired sauna temperature
+- Powering on the sauna with desired temperature
+- Powering off the sauna to the default temperature
+- Review session logs of sauna activity along with temperature status
 
 ## Javascript Client Library / SDK
 
@@ -21,7 +33,7 @@ var larz = new Larz("http://10.0.0.112");
 ### Get current status
 
 ```
-larz.status(callback())
+larz.status(callback)
 >
 {
   "temperature_out" : "25.69",
@@ -93,23 +105,23 @@ lars.session("1448927628", callback)
 
 ## HTTP API
 
-Larz lives at the address `http://10.0.0.112`
+To access Larz simply go to `http://10.0.0.112`.
 
 ### Auth
 
-Larz will be at your service when you use `basic` authentication with username `root` and the same password as for our wifi.
+Larz is at your service when you use `basic` authentication with the username `root` along with using the same password as per our wifi.
 
-### The status of Larz
+### Checking the Status of Larz
 
-Larz will tell you how's he doing when you ask him with `/data/get`
+Ask Larz how he's doing by using `/data/get`.
 
-**Example request:**
+**Example Request:**
 
 ```
 curl -s -u root:<password> http://10.0.0.112/data/get
 ```
 
-**Example response:**
+**Example Response:**
 
 ```
 {
@@ -126,42 +138,40 @@ curl -s -u root:<password> http://10.0.0.112/data/get
 }
 ```
 
-### What can Larz do for you
+#### Controlling the Sauna
 
-All operations with Larz is just [dealing with Arduino Yun's HTTP interface for its key-value store](https://www.arduino.cc/en/Guide/ArduinoYun#toc5).
+To control the sauna's current state change the `boolean` value for the `power` key within the key value store.
+- Power ON the sauna by using `1`
+- Power OFF the sauna by using `0`
 
-#### Turn the sauna on and off
-
-Just change the `boolean` value for the `power` key in the key value store to `1` for on or to `0` for off.
-
-**Turing on:**
+**Example Power ON Request:**
 ```
 curl -s -u root:<password> http://10.0.0.112/data/put/power/1
 ```
 
-**Turning off:**
+**Example Power OFF Request:**
 ```
 curl -s -u root:<password> http://10.0.0.112/data/put/power/0
 ```
 
-#### Set the inner temperature
+#### Setting the Sauna Temperature
 
-WARNING! The default temperature is very low, so even if you turn the sauna on, the heater will remain off. You have to set some higher temperature then the temperature inside sauna to turn tha sauna heater really on!
+WARNING! The default temperature is very low, so even if you turn the sauna on, the heater will remain off. To make sure the sauna is nice and hot you'll have to set a higher temperature then the current temperature inside sauna to make sure the heater is heating!
 
-Setting temperature is updating the Arduino Yun HTTP key-value store key `temperature` with integer value represering the target temperature in degrees Celsius.
+Setting the temperature is updating the Arduino Yun HTTP key-value store key `temperature` with integer value representing the target temperature in degrees Celsius.
 
-**Example**
+**Example Temperature Setting Request**
 ```
 curl -s -u root:<password> http://10.0.0.112/data/put/temperature/27
 ```
 
-### All the data of Larz
+### All Sauna Data with Larz
 
 Larz stores the data for every sauna session.
 
-#### Fetch all the sessions
+#### Fetching All Sauna Sessions
 
-Each line in the response represents one session and its start date and time in the [unix time format](https://en.wikipedia.org/wiki/Unix_time)
+Each line within the response represents one session and its start date and time in the [Unix time format](https://en.wikipedia.org/wiki/Unix_time)
 
 Example Request:
 
@@ -176,26 +186,26 @@ Example Response:
 1448927714
 ```
 
-#### Fetch Sesssion details
+#### Fetching Sesssion Details
 
-Session datails are CSV-like data delimited by a semicolon (`;`) logged every 10 seconds.
+Session details are CSV-like data delimited by a semicolon (`;`) logged every 10 seconds.
 
 After delimiting:
 - the first value is a boolean indicating if the heater is on (`1`) or off (`0`)
-- the second value is a float with inner temperature in degree Celsius
-- the third value is a float with outer temperature in degree Celsius
+- the second value is a float with inner temperature in degrees Celsius
+- the third value is a float with outer temperature in degrees Celsius
 
-The name of the `CSV` file is the session date  (in unix time format) + the `.csv` fromat suffix.
+The name of the `CSV` file is the session date (in unix time format) + the `.csv` fromat suffix.
 
 e.g. `1448927628.csv` for the first item in the previous example.
 
-**Example**
+**Example Request**
 
 ```
-curl -s -u root:hubert11 http://10.0.0.112/sd/sessions/1448927628.csv
+curl -s -u root:<password> http://10.0.0.112/sd/sessions/1448927628.csv
 ```
 
-**Example response**
+**Example Response**
 ```
 0;26.38;25.81
 0;26.31;25.75
@@ -258,8 +268,7 @@ curl -s -u root:hubert11 http://10.0.0.112/sd/sessions/1448927628.csv
 0;26.38;25.88
 ```
 
-
-## Aruino code
+## Arduino code
 
 ## Electronic parts & PCB
 
@@ -270,10 +279,3 @@ curl -s -u root:hubert11 http://10.0.0.112/sd/sessions/1448927628.csv
 ![Breadboard photo](https://raw.githubusercontent.com/netmilk/larz/master/img/IMG_3182.jpg)
 
 ## Yun Linux
-
-
-
-
-
-
-
