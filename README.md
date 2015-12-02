@@ -263,6 +263,8 @@ curl -s -u root:hubert11 http://10.0.0.112/sd/sessions/1448927628.csv
 
 ## Electronic parts & PCB
 
+## Mechanical parts and boxes
+
 ### Prototyping
 
 ![Breadboard photo](https://raw.githubusercontent.com/netmilk/larz/master/img/IMG_3182.jpg)
