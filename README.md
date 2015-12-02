@@ -2,6 +2,8 @@
 
 Sauna control buddy
 
+![Sauna emoji](https://i.guim.co.uk/img/static/sys-images/Guardian/Pix/pictures/2015/11/4/1446659930454/bff5484a-481b-4287-a6df-8c8c29f56ecf-2060x1236.jpeg?w=1920&q=85&auto=format&sharp=10&s=648362f3c38bb3df3aa09c25d3a6cd9e)
+
 ## Javascript Client Library / SDK
 
 The SDK is encapsuling Larz's HTTP API with a async interface.
