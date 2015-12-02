@@ -18,19 +18,19 @@ Some of Larz's basic features include:
 
 ## Javascript Client Library / SDK
 
-The SDK is encapsuling Larz's HTTP API with a async interface.
+The SDK is encapsuling Larz's HTTP API with an asynchronous interface.
 
 If the function is called with the `callback` function passed as the last argument, the `callack` is called with:
-- the error object as a first argument or null if no error happend
+- an error object as the first argument or null if there's no error or
 - the return data as the second argument
 
-### Creating the instance and connecting
+### Creating an Instance and Connecting
 
 ```
 var larz = new Larz("http://10.0.0.112");
 ```
 
-### Get current status
+### Get Current Status
 
 ```
 larz.status(callback)
@@ -47,7 +47,7 @@ larz.status(callback)
 ```
 
 
-### Turn the sauna on and off
+### Turning the Sauna ON and OFF
 
 Turn the sauna on
 
@@ -62,7 +62,7 @@ lars.turnOff(callback)
 > true
 ```
 
-### Set the temperature
+### Set the Temperature
 
 ```
 lars.setTemperature(95, callback);
@@ -78,7 +78,7 @@ larz.sessions(callback)
 > ['1448927628', '1448927714', '1448929716', '1449011515']
 ```
 
-#### Get specific session data
+#### Get Specific Session Data
 
 ```
 lars.session("1448927628", callback)
