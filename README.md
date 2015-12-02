@@ -46,7 +46,7 @@ lars.turnOn(callback)
 
 Turn the sauna off
 ```
-lars.turnOn(callback)
+lars.turnOff(callback)
 > true
 ```
 
